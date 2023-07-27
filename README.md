@@ -31,30 +31,30 @@ Package Contents:
 
 ## Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
-
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+* Purpose of the analysis is to build a model that can identify the credit worthiness of borrowers for a peer-to-peer lending services company based on a historical dataset of lending activities
+* From the historical data, we can get the loan size,	interest rate, borrower income,	debt to income ratio,	num of accounts, derogatory marks, total debt and then to predict its credit worthiness as either `0` for a healthy loan versus `1` for a high risky loan
+* Based on the historical data it was observed that there were approximately about 30 times `0` healthy loans compared to `0` high risk loans. 
+* To understand it we need to first create a model, train the model using fit and then predict the model to determine the credit worthiness of the borrower by classifying it as `0` (healthy loan) with `1` (high-risk loan)
+* For this we first used `LogisticRegression` which is used for classification models since the prediction to be made here is only two categories as `0` (healthy loan) or `1` (high-risk loan). But since the data was more for healthy loan (`0`), we were not getting expected results so we used random over sampling method to generate more sample data to balance out this difference. Once the sample size was balanced then we used the `LogisticRegression` again to get more better predictions
 
 ## Results
 
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
+The follwing details provide balanced accuracy scores and the precision and recall scores of the machine learning models we used.
 
-* Machine Learning Model 1:
-  * Description of Model 1 Accuracy, Precision, and Recall scores.
+* Machine Learning Model 1: `LogisticRegression` before random sampling 
+  * For this Model1 we have the following scores:
+    * Accuracy: **0.9520479254722232**
+    * Precision: **100%** for Healthy Loan (`0`) and **85%** for High-Risk Loan (`1`)
+    * Recall: **99%** for Healthy Loan (`0`) and **91%** for High-Risk Loan (`1`)
 
-
-
-* Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
+* Machine Learning Model 2: `LogisticRegression` after random sampling 
+  * For this Model1 we have the following scores:
+    * Accuracy: **0.9936781215845847**
+    * Precision: **100%** for Healthy Loan (`0`) and **85%** for High-Risk Loan (`1`)
+    * Recall: **84%** for Healthy Loan (`0`) and **99%** for High-Risk Loan (`1`)
 
 ## Summary
-
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
-
-If you do not recommend any of the models, please justify your reasoning.
+Based on above data, here are our recommendations:
+* Model2 performed better as we can see that the Accuracy, Precision and Recall rates have been improved 
+* Here the main focus should be on the High-Risk Loans (`1`) as we have historically good data for Healthy Loans (`0`) also its less risky but we now have improved score of High-Risk (`1`) using random over sampling
+* Although the data is improved with Model2, it would be a business decision to determine if they are better off with the prediction of high-risk loans (`1`) as that is the most crucial risk at this time which was improved by random sample data and not the actual data
