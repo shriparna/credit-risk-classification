@@ -13,7 +13,7 @@ Package Contents:
 
 2. [Credit_Risk/lending_data.csv](https://github.com/shriparna/credit-risk-classification/blob/main/Credit_Risk/lending_data.csv) Input data file which was provided
 
-#### Note: File may be too large to view
+    #### Note: File may be too large to view
 
 <hr>
 
